@@ -11,6 +11,7 @@ class Config {
   static ENVIRONMENT = Environment.Development
   static DATABASE = Database.Development
   static BASEURL = BaseURL.Development
+  static VERSION = 'V1'
 }
 
 export default Config

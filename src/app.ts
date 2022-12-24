@@ -13,6 +13,7 @@ import compression from 'compression'
 import mongoSanitize from 'express-mongo-sanitize'
 import SwaggerUi from 'swagger-ui-express'
 import SwaggerConfig from '../swagger.json'
+import routes from './routes'
 //@desc Express instance
 const app: Express = express()
 
@@ -56,6 +57,9 @@ app.use(express.json())
 
 //@desc Apply Swagger documentation
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(SwaggerConfig))
+
+//@des use our routes
+app.use(`/api/${Config.VERSION}`,routes)
 
 //@desc Handle invalid end points requests
 app.all('*', (req: Request, res: Response) => {
